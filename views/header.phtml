@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= e($page_title ?? 'Job Portal') ?> - <?= e(SITE_NAME) ?></title>
+    <meta name="description" content="<?= e($meta_description ?? 'Find the latest government and private jobs.') ?>">
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1><a href="/"><?= e(SITE_NAME) ?></a></h1>
+            <?php include __DIR__ . '/nav.phtml'; ?>
+        </header>
+        <main>
