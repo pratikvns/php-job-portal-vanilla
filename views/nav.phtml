@@ -1,0 +1,18 @@
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <?php if (isLoggedIn()): ?>
+            <?php if ($_SESSION['role'] === 'admin'): ?>
+                <li><a href="/admin/dashboard">Admin Dashboard</a></li>
+            <?php elseif ($_SESSION['role'] === 'hr'): ?>
+                <li><a href="/hr/dashboard">HR Dashboard</a></li>
+            <?php else: ?>
+                <li><a href="/user/dashboard">My Dashboard</a></li>
+            <?php endif; ?>
+            <li><a href="/logout">Logout (<?= e($_SESSION['name']) ?>)</a></li>
+        <?php else: ?>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        <?php endif; ?>
+    </ul>
+</nav>
