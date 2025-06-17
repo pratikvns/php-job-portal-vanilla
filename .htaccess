@@ -1,0 +1,22 @@
+# Enable URL Rewriting
+RewriteEngine On
+RewriteBase /
+
+# Set security headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
+
+# Reroute all requests to files/directories that don't exist to router.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ router.php?url=$1 [L,QSA]
+
+# Prevent directory listing
+Options -Indexes
+
+# Deny access to sensitive files
+<FilesMatch "\.(sql|md|log|ini|sample)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
